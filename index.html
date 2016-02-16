@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+</head>
+<body>
+Element: <br>
+<div style="width: 150px; height: 150px; background-color: blue;" id="div">
+<code>
+	&lt;div style="width: 150px; height: 150px; background-color: blue;" id="div"&gt;
+</code><br>
+
+Code: <br>
+<code id="js_code">
+var kv1 = new Construct.KeyValue(Construct.KeyValueType.OPACITY, 0.5);
+var kv2 = new Construct.KeyValue(Construct.KeyValueType.TRANSLATE, [100,100,0]);
+
+var kf1 = new Construct.KeyFrame(500, [kv1]);
+
+var kf2 = new Construct.KeyFrame(1000, [kv2]);
+
+var a1 = new Construct.Animation({
+	element: '#div',
+	name: 'anim1',
+	duration: 1000,
+	keyFrames: [kf1, kf2]
+});
+</code> <br>
+
+<button onclick="eval(document.getElementById('js_code').innerText);">Run This Code!</button>
+
+<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="construct.js"></script>
+
+</body>
+</html>
