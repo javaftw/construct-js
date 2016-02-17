@@ -66,24 +66,35 @@ var Construct = (function() {
             keyFramesString += '\n' + TAB_1 + '}\n';
 		}
         keyFramesString += '}\n';
-        $('body').append('<style> @keyframes ' + keyFramesString + '\n\n@-webkit-keyframes ' + keyFramesString + '\n</style>');
+        $('body').append('<style id="anim_' + this.name + '"> @keyframes ' + keyFramesString + '\n\n@-webkit-keyframes ' + keyFramesString + '\n</style>');
+        $(this.element).css({
+		    "animation-name": this.name,
+		    "animation-duration": this.duration + 'ms',
+		    "animation-timing-function": this.timingFunction,
+		    "animation-delay": this.delay,
+		    "animation-iteration-count": this.iterationCount,
+		    "animation-direction": this.direction,
+		    "animation-fill-mode": this.fillMode,
+			"animation-play-state": "paused"
+		});
 	};
 
 	Animation.prototype.start = function() {
-		$("body").append(
-			"<style>\n" +
-			this.element + ' {\n ' +
-			'    animation-name: ' + this.name + ';\n' +
-			'    animation-duration: ' + this.duration + 'ms;\n' + 
-			'    animation-timing-function: ' + this.timingFunction + ';\n' + 
-			'    animation-delay: ' + this.delay + ';\n' + 
-			'    animation-iteration-count: ' + this.iterationCount + ';\n' + 
-			'    animation-direction: ' + this.direction + ';\n' + 
-			'    animation-fill-mode: ' + this.fillMode + ';\n' + 
-			"}\n" +
-			"</style>"
-		);
-	};
+		$(this.element).css({
+			"animation-play-state": "running"
+		});
+	}
+
+	Animation.prototype.pause = function() {
+		$(this.element).css({
+			"animation-play-state": "paused"
+		});
+	}
+
+	Animation.prototype.delete = function() {
+		$(this.element).css({});
+		$('#anim_' + this.name).remove();
+	}
 
 	_Construct.KeyFrame = KeyFrame = function(time, values) {
 		this.time = time;
