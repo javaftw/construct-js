@@ -8,20 +8,19 @@
 
 <div class="container">
     <h1>Element:</h1>
-    <div style="width: 150px; height: 150px; background-color: blue;" id="div"></div>
+    <div style="width: 150px; height: 150px; background-color: orange;" id="div"></div>
     <br>
-    <pre>&lt;div style="width: 150px; height: 150px; background-color: blue;" id="div"&gt;</pre><br>
+    <pre>&lt;div style="width: 150px; height: 150px; background-color: orange;" id="div"&gt;</pre><br>
 
     Code: <br>
     <pre id="js_code">
-    var kv1 = new Construct.KeyValue(Construct.KeyValueType.OPACITY, 0.5);
+    var kv1 = new Construct.KeyValue(Construct.KeyValueType.OPACITY, 0.1);
 
-    var kv2 = new Construct.KeyValue(Construct.KeyValueType.ROTATE, [10,20,30]);
-    var kv3 = new Construct.KeyValue(Construct.KeyValueType.ROTATE, [100, 200, 300]);
+    var kv2 = new Construct.KeyValue(Construct.KeyValueType.ROTATE, [360, 360, 360]);
 
     var kf1 = new Construct.KeyFrame(500, [kv1]);
 
-    var kf2 = new Construct.KeyFrame(1000, [kv2, kv3]);
+    var kf2 = new Construct.KeyFrame(1000, [kv2]);
 
     var a1 = new Construct.Animation({
     	element: '#div',
